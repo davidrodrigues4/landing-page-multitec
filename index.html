@@ -26,8 +26,8 @@
 
     <main id="sorteio">
         <aside>
-            <h2><span>Inscreva-se agora</span></h2>
-            <h2>no Sorteio!</h2>
+            <h2 class="efeito-maquina"><span>Inscreva-se agora</span></h2>
+            <h2 class="efeito-maquina">no Sorteio!</h2>
             <p>
                 Atenção, gamers! Estamos super empolgados em anunciar nosso mais novo sorteio: uma incrível placa de vídeo GTX 1050 TI! 🚀
             </p>    
@@ -52,4 +52,32 @@
         Desenvolvido por David Rodrigues e Levi Rodrigues
     </footer>
 </body>
+
+<script>
+    function typeWrite(elemento) {
+     let textoArray;
+     let targetElement;
+ 
+     // Verifica se há um <span> dentro do <h2>
+     if (elemento.querySelector('span')) {
+         targetElement = elemento.querySelector('span'); // Se houver <span>, use-o
+     } else {
+         targetElement = elemento; // Caso contrário, use o <h2> diretamente
+     }
+ 
+     textoArray = targetElement.textContent.split(''); // Pega o texto
+     targetElement.textContent = ''; // Limpa o conteúdo
+ 
+     textoArray.forEach(function(letra, i) {
+         setTimeout(function() {
+             targetElement.textContent += letra; // Adiciona a letra ao elemento alvo
+         }, 75 * i);
+     });
+ }
+ 
+ const titulos = document.querySelectorAll('.efeito-maquina');
+ titulos.forEach(titulo => typeWrite(titulo));
+ 
+ </script>
+
 </html>
